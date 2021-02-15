@@ -1,7 +1,7 @@
 # video-review-tool
 A web app that allows for manual logging of custom events in videos.
 
-https://j-calin.github.io/video-review-tool/
+https://j-calin.github.io/video-reviewer/
 
 This tool provides added features to the original at https://github.com/afzaman/video-logger
 
