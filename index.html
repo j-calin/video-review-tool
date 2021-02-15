@@ -1,0 +1,64 @@
+<html lang="en">
+    <head>
+        <link rel="icon" type="image/png" href="https://img.icons8.com/dotty/80/000000/video-editing.png"/>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/style.css">
+        <title>Video Logger</title>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Local Video Logger</a>
+            <input class="form-control-file" type="file" accept="video/*"/>
+            <div id="message"></div>
+            <button class="btn btn-outline-danger" onclick="clearLog()">Clear Log</button>
+            <button id="undo-button" class="btn btn-outline-warning" onclick="undoLast();">Undo Last</button>
+            <button class="btn btn-outline-success" onclick="exportTableToCSV('log.csv')">Export CSV File</button>         
+          </nav>
+        <div class="m-5">
+            <div class="row">
+                <div id="video-container">
+                    <video id="video" width="720" controls></video>
+                    <div class="slidecontainer">
+                        <input type="range" min="2" max="150" value="20" class="slider" id="playBackSpeed">
+                        <div id="playBackSpeedDisplay"></div>
+                      </div>
+                </div>
+                <div class="col-lg-2">
+                    <div id="button-container" class="m-3"></div>
+                    <div id="load-IGCT-container"><button id="load-IGCT-classes-button" class="btn btn-outline-info" onclick="loadIGCTclasses()">Load IGCT Classes</button></div>
+                    <input type="text" id="class-name">                   
+                    <button id="add-button" class="btn btn-outline-success" onclick="addClassButton()">Add Class</button>
+                    <!-- START EDIT -->
+                    <button id="remove-class-button" class="btn btn-outline-danger" onclick="removeClass()">Remove Class</button>
+                    <!-- END EDIT -->
+                </div>
+            </div>
+        </div>
+        <div style="max-height: calc(50vh); overflow:auto;">
+            <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">object</th>
+                    <!-- START EDIT -->
+                    <th scope="col">start_time</th>
+                    <th scope="col">end_time</th>
+                    <!--th scope="col"> </th-->
+                    <!--th input type="button" id="undo-button" class="btn btn-outline-warning" onclick="undoLast();">Undo</th-->
+                    <!-- onclick="removeTimestamp();" END EDIT -->
+                  </tr>
+                  <!--tr>
+                    <td><input type="text" id="new_object"></td>
+                    <td><input type="text" id="new_startTime"></td>
+                    <td><input type="text" id="new_endTime"></td>
+                    <td><input type="button" class="add" onclick="add_row();" value="Add Row"></td>
+                  </tr-->
+                </thead>
+                <tbody id="timestamps"></tbody>
+                <tfoot id="foot"></tfoot>
+            </table>
+        </div>           
+        <script class="btn" src="js/array.js"></script>
+    </body>
+</html>
